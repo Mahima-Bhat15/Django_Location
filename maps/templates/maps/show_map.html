@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map Location</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        #leaflet-map {
+            height: 400px;
+            width: 100%;
+        }
+        .btn-container {
+            margin-bottom: 10px;
+        }
+        .btn {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Your Current Location on Leaflet Map</h2>
+    <div class="btn-container">
+        <button id="showLocation" class="btn">Show My Location</button>
+    </div>
+    <div id="leaflet-map"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var leafletMap = L.map('leaflet-map').setView([12.9716, 77.5946], 12); // Default: Bangalore
+
+            // Add OpenStreetMap Layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(leafletMap);
+
+            // Show user's location
+            document.getElementById("showLocation").addEventListener("click", function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        function (position) {
+                            var lat = position.coords.latitude;
+                            var lng = position.coords.longitude;
+                            leafletMap.setView([lat, lng], 14);
+                            L.marker([lat, lng]).addTo(leafletMap)
+                                .bindPopup("You are here!").openPopup();
+                        },
+                        function (error) {
+                            alert("Error: Unable to fetch location. " + error.message);
+                        },
+                        { enableHighAccuracy: true }
+                    );
+                } else {
+                    alert("Geolocation is not supported by your browser.");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
