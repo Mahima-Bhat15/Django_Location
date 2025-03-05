@@ -16,12 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import homepage  # Import homepage view
+from .views import homepage 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', homepage, name='home'),  # Homepage URL
-    path('maps/', include('maps.urls')),  # Include URLs from the maps app
+    path('', homepage, name='home'), 
+    path('maps/', include('maps.urls')), 
 ]
 
 
