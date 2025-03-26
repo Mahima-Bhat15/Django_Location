@@ -170,8 +170,6 @@ sudo apt-get install -y git python3-venv python3-pip libproj-dev proj-data libge
 
    &nbsp;  <img src="database.png" alt="Screenshot" width="250" height="300">
 
-   *  Import Data Using pgAdmin
-
    * &nbsp;Open pgAdmin and Connect to the Database
 
    * &nbsp;Navigate to the Target Schema
