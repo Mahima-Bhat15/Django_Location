@@ -1,4 +1,3 @@
-
 # Towerbuddy backend 2.0 Local Setup
 
 [WSL (ubuntu 20.04)/ any debian flavour of linux]
@@ -80,9 +79,129 @@ sudo apt-get install -y git python3-venv python3-pip libproj-dev proj-data libge
   ```
   sudo systemctl start postgresql
   ```
-  ![Screenshot](db_create.png) 
+&nbsp; **2. Set up the database**
+
+  <img src="db_create.png" alt="Screenshot" width="500" height="300">
+
+  Enter a Database Name and set an Owner (DB User), then Save.
+
+  <img src="db_name.png" alt="Screenshot" width="600" height="200">
+
+  Enable PostGIS -> Right-click on your database and select **Query Tool**.
+
+  Run:
+  ```
+  CREATE EXTENSION postgis;
+  ```
+  &nbsp;**3. Setting Up the Environment File (.env)**
+
+  Step 1 :  Create the .env File and run the following command in your project directory:
+  ```
+  touch .env
+  ```
+  Step 2 :  Obtain Environment Variables 
+
+  Contact a team member to obtain the necessary environment variable values.
+
+  Step 3 :  Configure the .env File
+
+  Once you receive the details, update the .env file accordingly.
+
+  &nbsp;**4. Setting Up the Core Directory**
+
+  The following files require modifications as part of the Core directory setup:
+
+    core/wsgi.py
+
+    core/settings/base.py
+
+    core/settings/dev.py
+
+   &nbsp;**5. Running Migrations**
+  
+   To create and apply database migrations, run the following commands in your project directory:
+   ```
+   # Generate Migrations for the tenants App
+   python3 manage.py makemigrations tenants
+
+   # Generate Migrations for All Apps
+   python3 manage.py makemigrations
+
+   # Apply Migrations to the Database
+   python3 manage.py migrate
+   ```
+   &nbsp;**5. Open Shell**
+   ```
+   python3 manage.py shell
+   ```
+   &nbsp; and paste the following : 
+   ```
+   from tenants.models import Client, Domain
+   tenant = Client(schema_name='public', name='Public')
+   tenant.save()
+   domain = Domain(tenant=tenant, domain='localhost', is_primary=True)
+   domain.save()
+   ```
+   &nbsp; Press enter and them CTRL+D to exit
+
+   &nbsp;**5. Running Migrations Creating a Tenant**
+
+   Run the following command to create migrations for the required apps:
+   
+   ```
+   python3 manage.py makemigrations users realestate legal orgs reports consents
+   python3 manage.py migrate
+   ```
+   &nbsp;**6. Creating a Tenant**
+   
+   Step 1 : Create a New Tenant
+   ```
+   python3 manage.py create_tenant
+   ```
+   Step 2: Configure the Tenant with the following details:
+
+   **Schema Name**: ind
+   
+   **Domain**: ind.localhost
+   
+   ## 3. Putting data into the database
+
+   * Get the database zip file from a team member. 
+
+   &nbsp;  <img src="database.png" alt="Screenshot" width="250" height="300">
+
+   *  Import Data Using pgAdmin
+
+   * &nbsp;Open pgAdmin and Connect to the Database
+
+   * &nbsp;Navigate to the Target Schema
+      
+   &nbsp;  <img src="schemas.png" alt="Screenshot" width="250" height="300">
+
+   * Tenant schema → For Tenant Data tables and right-click on the target table → Import/Export Data...
+
+   &nbsp;  <img src="t1.png" alt="Screenshot" width="300" height="300">
+   &nbsp;  <img src="t2.png" alt="Screenshot" width="300" height="300">
+   &nbsp;  <img src="t3.png" alt="Screenshot" width="350" height="250">
+
+   * Public schema → For Geo Data tables and right-click on the target table → Import/Export Data...
+
+   &nbsp;  <img src="t4.png" alt="Screenshot" width="300" height="300">
+   &nbsp;  <img src="t6.png" alt="Screenshot" width="300" height="300">
+   &nbsp;  <img src="t7.png" alt="Screenshot" width="350" height="250">
+   
+   * To check if data is imported correctly, do this :
+
+   &nbsp;  <img src="t8.png" alt="Screenshot" width="300" height="300">
+   
+   &nbsp;  <img src="t9.png" alt="Screenshot" width="700" height="100">
+   
+   
+
+   
   
 
+  
 
 
 
