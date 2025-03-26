@@ -176,13 +176,13 @@ sudo apt-get install -y git python3-venv python3-pip libproj-dev proj-data libge
       
    &nbsp;  <img src="schemas.png" alt="Screenshot" width="250" height="300">
 
-   * Tenant schema → For Tenant Data tables and right-click on the target table → Import/Export Data...
+   * Tenant schema → Go to Tenant Data tables and right-click on the target table → Import/Export Data...
 
    &nbsp;  <img src="t1.png" alt="Screenshot" width="300" height="300">
    &nbsp;  <img src="t2.png" alt="Screenshot" width="300" height="300">
    &nbsp;  <img src="t3.png" alt="Screenshot" width="350" height="250">
 
-   * Public schema → For Geo Data tables and right-click on the target table → Import/Export Data...
+   * Public schema → Go to Geo Data tables and right-click on the target table → Import/Export Data...
 
    &nbsp;  <img src="t4.png" alt="Screenshot" width="300" height="300">
    &nbsp;  <img src="t6.png" alt="Screenshot" width="300" height="300">
