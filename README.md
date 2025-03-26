@@ -130,7 +130,7 @@ sudo apt-get install -y git python3-venv python3-pip libproj-dev proj-data libge
    # Apply Migrations to the Database
    python3 manage.py migrate
    ```
-   &nbsp;**5. Open Shell**
+   &nbsp;**6. Open Shell**
    ```
    python3 manage.py shell
    ```
@@ -144,7 +144,7 @@ sudo apt-get install -y git python3-venv python3-pip libproj-dev proj-data libge
    ```
    &nbsp; Press enter and them CTRL+D to exit
 
-   &nbsp;**5. Running Migrations for Apps**
+   &nbsp;**7. Running Migrations for Apps**
 
    Run the following command to create migrations for the required apps:
    
@@ -152,7 +152,7 @@ sudo apt-get install -y git python3-venv python3-pip libproj-dev proj-data libge
    python3 manage.py makemigrations users realestate legal orgs reports consents
    python3 manage.py migrate
    ```
-   &nbsp;**6. Creating a Tenant**
+   &nbsp;**8. Creating a Tenant**
    
    Step 1 : Create a New Tenant
    ```
