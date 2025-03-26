@@ -144,7 +144,7 @@ sudo apt-get install -y git python3-venv python3-pip libproj-dev proj-data libge
    ```
    &nbsp; Press enter and them CTRL+D to exit
 
-   &nbsp;**5. Running Migrations Creating a Tenant**
+   &nbsp;**5. Running Migrations for Apps**
 
    Run the following command to create migrations for the required apps:
    
