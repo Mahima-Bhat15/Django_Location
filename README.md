@@ -80,7 +80,7 @@ sudo apt-get install -y git python3-venv python3-pip libproj-dev proj-data libge
   ```
   sudo systemctl start postgresql
   ```
-  ![Screenshot](images/db_create.png) 
+  ![Screenshot](db_create.png) 
   
 
 
